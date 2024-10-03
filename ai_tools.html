@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        #searchInput {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        #searchInput:focus {
+            outline: none;
+            box-shadow: 0 2px 15px rgba(52, 152, 219, 0.3);
+        }
+        #categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .category {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        a:hover {
+            color: #3498db;
+            background-color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Tools</h1>
+
+        <input type="text" id="searchInput" placeholder="Search for AI tools...">
+
+        <div id="categories">
+            <div class="category">
+                <h2>Chat AI</h2>
+                <ul>
+                    <li><a href="https://chatgpt.com/">ChatGPT</a></li>
+                    <li><a href="https://copilot.microsoft.com/">Copilot</a></li>
+                    <li><a href="https://gemini.google.com/">Gemini</a></li>
+                    <li><a href="https://www.perplexity.ai/">Perplexity</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2>Image AI</h2>
+                <ul>
+                    <li><a href="https://www.midjourney.com/explore?tab=top">Midjourney</a></li>
+                    <li><a href="https://ideogram.ai/t/explore">Ideogram</a></li>
+                    <li><a href="https://blackforestlabs.ai/">Flux.1</a></li>
+                    <li><a href="https://firefly.adobe.com/">Firefly</a></li>
+                    <li><a href="https://huggingface.co/">Hugging Face</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2>Video AI</h2>
+                <ul>
+                    <li><a href="https://runwayml.com/">Runway</a></li>
+                    <li><a href="https://pika.art/">Pika</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2>Code AI</h2>
+                <ul>
+                    <li><a href="https://claude.ai/login?returnTo=/?">Claude</a></li>
+                    <li><a href="https://www.cursor.com/">Cursor</a></li>
+                    <li><a href="https://v0.dev/chat">V0 dev</a></li>
+                </ul>
+            </div>
+
+            <div class="category">
+                <h2>Music AI</h2>
+                <ul>
+                    <li><a href="https://suno.com/create">Suno</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchTools() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const categories = document.getElementsByClassName('category');
+
+            for (let i = 0; i < categories.length; i++) {
+                const category = categories[i];
+                const links = category.getElementsByTagName('a');
+                let categoryVisible = false;
+
+                for (let j = 0; j < links.length; j++) {
+                    const txtValue = links[j].textContent || links[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        links[j].style.display = "";
+                        categoryVisible = true;
+                    } else {
+                        links[j].style.display = "none";
+                    }
+                }
+
+                category.style.display = categoryVisible ? "" : "none";
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', searchTools);
+    </script>
+</body>
+</html>
